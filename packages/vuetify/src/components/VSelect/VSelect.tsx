@@ -433,20 +433,6 @@ export const VSelect = genericComponent<new <
             ...slots,
             default: ({ id }) => (
               <>
-                <select
-                  hidden
-                  multiple={ props.multiple }
-                  name={ autocomplete.fieldName.value }
-                >
-                  { items.value.map(item => (
-                    <option
-                      key={ item.value }
-                      value={ item.value }
-                      selected={ selectedValues.value.includes(item.value) }
-                    />
-                  ))}
-                </select>
-
                 <VMenu
                   id={ menuId.value }
                   ref={ vMenuRef }
@@ -549,6 +535,20 @@ export const VSelect = genericComponent<new <
                     </VList>
                   )}
                 </VMenu>
+
+                <select
+                  hidden
+                  multiple={ props.multiple }
+                  name={ autocomplete.fieldName.value }
+                >
+                  { items.value.map(item => (
+                    <option
+                      key={ item.value }
+                      value={ item.value }
+                      selected={ selectedValues.value.includes(item.value) }
+                    />
+                  ))}
+                </select>
 
                 { model.value.map((item, index) => {
                   function onChipClose (e: Event) {
